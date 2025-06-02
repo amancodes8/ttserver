@@ -7,30 +7,33 @@ const helmet = require('helmet');
 
 const app = express();
 
+// Use environment variables
 const PORT = process.env.PORT || 3000;
 const API_KEY = process.env.API_KEY;
 
 if (!API_KEY) {
-  console.error('FATAL ERROR: API_KEY is not defined in environment variables');
+  console.error('FATAL ERROR: API_KEY is not defined');
   process.exit(1);
 }
 
+// Middlewares
 app.use(cors()); // Allow all origins
+app.use(helmet());
+app.use(express.json());
 
-app.use(helmet()); // Security headers
-
-// API key middleware
+// API Key middleware
 app.use((req, res, next) => {
   const userKey = req.headers['x-api-key'];
-  if (userKey !== API_KEY) {
+  if (!userKey || userKey !== API_KEY) {
     return res.status(403).json({ error: 'Forbidden: Invalid API key' });
   }
   next();
 });
 
-// Timetable endpoint with batch param
+// Route: GET /api/timetable?batch=XYZ
 app.get('/api/timetable', (req, res) => {
   const batch = req.query.batch;
+
   if (!batch || typeof batch !== 'string' || !batch.match(/^[A-Z0-9]+$/)) {
     return res.status(400).json({ error: 'Invalid or missing batch parameter. Example: ?batch=E16' });
   }
@@ -39,26 +42,27 @@ app.get('/api/timetable', (req, res) => {
 
   fs.readFile(dataPath, 'utf-8', (err, data) => {
     if (err) {
-      console.error('Error reading timetable data:', err);
+      console.error('Error reading timetable.json:', err);
       return res.status(500).json({ error: 'Internal server error' });
     }
 
     try {
-      const allData = JSON.parse(data);
-      const batchData = allData.batches[batch];
+      const parsed = JSON.parse(data);
+      const result = parsed.batches[batch];
 
-      if (!batchData) {
+      if (!result) {
         return res.status(404).json({ error: 'Batch not found' });
       }
 
-      res.json(batchData);
-    } catch (parseErr) {
-      console.error('Error parsing timetable JSON:', parseErr);
+      res.json(result);
+    } catch (e) {
+      console.error('Error parsing timetable.json:', e);
       return res.status(500).json({ error: 'Internal server error' });
     }
   });
 });
 
+// Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
@@ -75,5 +79,5 @@ app.use((err, req, res, next) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
