@@ -3,44 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Timetable API Test</title>
+  <title>Timetable Viewer</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      padding: 2rem;
-      background: #f9f9f9;
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f0f2f5;
     }
     h2 {
       color: #333;
     }
     pre {
-      background: #eee;
-      padding: 1rem;
-      border-radius: 6px;
-      overflow-x: auto;
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <h2>API Response</h2>
+  <h2>Timetable for Batch E16</h2>
   <pre id="output">Loading...</pre>
 
   <script>
-    fetch("https://ttserver-production.up.railway.app/", {
+    const API_URL = "https://efficient-harmony-production.up.railway.app/api/timetable?batch=E16";
+    const API_KEY = "123abc456def789ghi";
+
+    fetch(API_URL, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "x-api-key": API_KEY
       }
     })
     .then(response => {
-      if (!response.ok) throw new Error(`Error: ${response.status}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return response.json();
     })
     .then(data => {
       document.getElementById("output").textContent = JSON.stringify(data, null, 2);
     })
-    .catch(error => {
-      document.getElementById("output").textContent = `Fetch failed: ${error.message}`;
+    .catch(err => {
+      document.getElementById("output").textContent = "Error: " + err.message;
     });
   </script>
 </body>
