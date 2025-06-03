@@ -22,6 +22,7 @@ Thumbs.db
 *.ntvs*
 *.njsproj
 *.sln
+data/admin.json
 
 # Optional: build output folders if you add any
 dist/
