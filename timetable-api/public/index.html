@@ -3,51 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Timetable Viewer</title>
+  <title>Timetable API Test</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
       padding: 20px;
-      background: #f0f2f5;
     }
-    h2 {
-      color: #333;
+    input, button {
+      padding: 8px;
+      margin: 5px 0;
     }
     pre {
-      background: #fff;
+      background: #f4f4f4;
       padding: 15px;
       border-radius: 5px;
       white-space: pre-wrap;
       word-wrap: break-word;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <h2>Timetable for Batch E16</h2>
-  <pre id="output">Loading...</pre>
+  <h2>Fetch Timetable</h2>
+  <label for="batch">Enter Batch Code (e.g., E16): </label>
+  <input type="text" id="batch" placeholder="E16" />
+  <button onclick="fetchTimetable()">Fetch</button>
+  <pre id="output">Awaiting request...</pre>
 
   <script>
-    const API_URL = "https://efficient-harmony-production.up.railway.app/api/timetable?batch=E16";
-    const API_KEY = "123abc456def789ghi";
+    const API_URL = "efficient-harmony-production.up.railway.app/api/timetable";  // Change this if deployed
+    const API_KEY = "123abc456def789ghi"; // Must match .env API_KEY
 
-    fetch(API_URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": API_KEY
+    function fetchTimetable() {
+      const batch = document.getElementById("batch").value.trim().toUpperCase();
+      const output = document.getElementById("output");
+
+      if (!batch) {
+        output.textContent = "Please enter a batch code.";
+        return;
       }
-    })
-    .then(response => {
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      return response.json();
-    })
-    .then(data => {
-      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
-    })
-    .catch(err => {
-      document.getElementById("output").textContent = "Error: " + err.message;
-    });
+
+      fetch(`${API_URL}?batch=${batch}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": API_KEY
+        }
+      })
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        output.textContent = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        output.textContent = "Error: " + err.message;
+      });
+      console.log(`Fetching timetable for batch: ${batch}`);
+      output.textContent = "Fetching timetable...";
+      
+    }
   </script>
 </body>
 </html>
