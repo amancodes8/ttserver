@@ -3,66 +3,264 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Timetable API Test</title>
+  <title>📅 Timetable Viewer + Admin</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
       padding: 20px;
     }
-    input, button {
-      padding: 8px;
-      margin: 5px 0;
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
     }
-    pre {
-      background: #f4f4f4;
-      padding: 15px;
+    h1, h2 {
+      text-align: center;
+      color: #222;
+    }
+    .batch-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px 0 30px;
+    }
+    .batch-buttons button {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
       border-radius: 5px;
-      white-space: pre-wrap;
-      word-wrap: break-word;
+      cursor: pointer;
+    }
+    .batch-buttons button:hover {
+      background-color: #0056b3;
+    }
+    .day-card {
+      background: #e9f0fa;
+      border-left: 6px solid #007bff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+    .day-card h3 {
+      margin-top: 0;
+      color: #0056b3;
+    }
+    .period {
+      margin: 8px 0;
+      padding: 8px 12px;
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.05);
+    }
+    .divider {
+      margin: 40px 0 20px;
+      border-bottom: 1px solid #ccc;
+    }
+    textarea, input, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-family: monospace;
+      resize: vertical;
+    }
+    button.update-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      cursor: pointer;
+      max-width: 200px;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+    button.update-btn:hover {
+      background: #0056b3;
+    }
+    .hidden {
+      display: none;
+    }
+    .msg {
+      font-weight: bold;
+      margin: 5px 0 15px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h2>Fetch Timetable</h2>
-  <label for="batch">Enter Batch Code (e.g., E16): </label>
-  <input type="text" id="batch" placeholder="E16" />
-  <button onclick="fetchTimetable()">Fetch</button>
-  <pre id="output">Awaiting request...</pre>
+  <div class="container">
+    <h1>📅 Timetable Viewer</h1>
+    <h2 id="batch-title">🗓️ Batch: -</h2>
+    <div class="batch-buttons" id="batch-switcher"></div>
+    <div id="timetable-display">Loading...</div>
+
+    <div class="divider"></div>
+
+    <h2>🔐 Admin Login</h2>
+    <div id="login-section">
+      <input type="text" id="username" placeholder="Username" autocomplete="username" />
+      <input type="password" id="password" placeholder="Password" autocomplete="current-password" />
+      <button class="update-btn" onclick="login()">Login</button>
+      <p id="login-msg" class="msg"></p>
+    </div>
+
+    <div id="admin-section" class="hidden">
+      <h2>✏️ Update Timetable (Admin)</h2>
+      <textarea id="timetable-data" placeholder='Timetable JSON will load here...' rows="15"></textarea>
+      <button class="update-btn" onclick="updateTimetable()">Update Timetable</button>
+      <p id="update-msg" class="msg"></p>
+    </div>
+  </div>
 
   <script>
-    const API_URL = "https://ttserver-7zps.onrender.com/api/timetable";  // Change this if deployed
-    const API_KEY = "123abc456def789ghi"; // Must match .env API_KEY
+    let token = '';
+    const API_KEY = '123abc456def789ghi'; // Replace with your actual API key
+    let fullData = [];
+    let currentIndex = 0;
 
     function fetchTimetable() {
-      const batch = document.getElementById("batch").value.trim().toUpperCase();
-      const output = document.getElementById("output");
+      fetch('http://localhost:3000/api/timetable', {
+        headers: { 'x-api-key': API_KEY }
+      })
+      .then(res => res.json())
+      .then(data => {
+        fullData = data;
+        createBatchButtons();
+        showBatch(0);
+      })
+      .catch(err => {
+        document.getElementById('timetable-display').innerHTML = '<p style="color:red">❌ Failed to load timetable</p>';
+        console.error(err);
+      });
+    }
 
-      if (!batch) {
-        output.textContent = "Please enter a batch code.";
+    function createBatchButtons() {
+      const switcher = document.getElementById('batch-switcher');
+      switcher.innerHTML = '';
+      fullData.forEach((_, index) => {
+        const btn = document.createElement('button');
+        btn.textContent = `Batch ${index + 1}`;
+        btn.onclick = () => showBatch(index);
+        switcher.appendChild(btn);
+      });
+    }
+
+    function showBatch(index) {
+      currentIndex = index;
+      const timetable = fullData[index];
+      document.getElementById('batch-title').textContent = `🗓️ Batch: ${timetable.batch}`;
+      const display = document.getElementById('timetable-display');
+      display.innerHTML = '';
+
+      for (const day in timetable) {
+        if (day !== 'batch') {
+          const card = document.createElement('div');
+          card.className = 'day-card';
+
+          const title = document.createElement('h3');
+          title.textContent = `📅 ${day}`;
+          card.appendChild(title);
+
+          timetable[day].forEach(period => {
+            const p = document.createElement('div');
+            p.className = 'period';
+            p.textContent = `🕘 ${period.time} — ${period.subject} (Room: ${period.room}, Teacher: ${period.teacher})`;
+            card.appendChild(p);
+          });
+
+          display.appendChild(card);
+        }
+      }
+    }
+
+    function login() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      fetch('http://localhost:3000/admin/login', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ username, password })
+      })
+      .then(res => res.json())
+      .then(data => {
+        const msg = document.getElementById('login-msg');
+        if (data.success) {
+          token = data.token;
+          msg.textContent = "✅ Login successful!";
+          document.getElementById('admin-section').classList.remove('hidden');
+          // Load timetable JSON into textarea for editing
+          loadTimetableForEdit();
+        } else {
+          msg.textContent = "❌ Login failed: " + (data.error || 'Invalid credentials');
+        }
+      })
+      .catch(err => {
+        document.getElementById('login-msg').textContent = '❌ Network error';
+        console.error(err);
+      });
+    }
+
+    function loadTimetableForEdit() {
+      // Load current timetable JSON from server to textarea
+      fetch('http://localhost:3000/api/timetable', {
+        headers: { 'x-api-key': API_KEY }
+      })
+      .then(res => res.json())
+      .then(data => {
+        // Convert batch array back into the original format { batches: { ... } }
+        const obj = { batches: {} };
+        data.forEach(item => {
+          const { batch, ...rest } = item;
+          obj.batches[batch] = rest;
+        });
+        document.getElementById('timetable-data').value = JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById('timetable-data').value = '// Failed to load timetable JSON';
+        console.error(err);
+      });
+    }
+
+    function updateTimetable() {
+      const raw = document.getElementById('timetable-data').value;
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch (e) {
+        document.getElementById('update-msg').textContent = '❌ Invalid JSON';
         return;
       }
 
-      fetch(`${API_URL}?batch=${batch}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": API_KEY
-        }
+      fetch('http://localhost:3000/admin/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, data })
       })
+      .then(res => res.json())
       .then(res => {
-        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        output.textContent = JSON.stringify(data, null, 2);
+        document.getElementById('update-msg').textContent = res.success
+          ? '✅ Timetable updated successfully!'
+          : '❌ ' + (res.error || 'Update failed');
+        if (res.success) fetchTimetable();
       })
       .catch(err => {
-        output.textContent = "Error: " + err.message;
+        document.getElementById('update-msg').textContent = '❌ Network error';
+        console.error(err);
       });
-      console.log(`Fetching timetable for batch: ${batch}`);
-      output.textContent = "Fetching timetable...";
-
     }
+
+    // Load timetable on page ready
+    fetchTimetable();
   </script>
 </body>
 </html>

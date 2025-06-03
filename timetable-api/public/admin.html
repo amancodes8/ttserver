@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button, textarea {
+      padding: 8px;
+      margin: 5px 0;
+    }
+    textarea {
+      width: 100%;
+      max-width: 800px;
+    }
+    #editor {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Admin Login</h2>
+  <input id="user" placeholder="Username" />
+  <input id="pass" placeholder="Password" type="password" />
+  <button onclick="login()">Login</button>
+
+  <hr />
+  <div id="editor" style="display:none;">
+    <h3>Edit Timetable JSON</h3>
+    <textarea id="json" rows="20" cols="80"></textarea><br>
+    <button onclick="update()">Update</button>
+  </div>
+
+  <pre id="msg">Waiting for login...</pre>
+
+  <script>
+    const API_BASE = "http://localhost:3000"; // Change this to your deployed URL if needed
+    let token = null;
+
+    function login() {
+      fetch(`${API_BASE}/admin/login`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          username: document.getElementById('user').value,
+          password: document.getElementById('pass').value
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          token = data.token;
+          document.getElementById('editor').style.display = 'block';
+          document.getElementById('msg').textContent = 'Login successful.';
+          loadData();
+        } else {
+          document.getElementById('msg').textContent = 'Login failed.';
+        }
+      })
+      .catch(err => {
+        document.getElementById('msg').textContent = "Login request failed.";
+        console.error(err);
+      });
+    }
+
+    function loadData() {
+      fetch(`${API_BASE}/api/timetable`, {
+        headers: { "x-api-key": "123abc456def789ghi" }
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('json').value = JSON.stringify(data, null, 2);
+        document.getElementById('msg').textContent = "Loaded timetable data.";
+      })
+      .catch(err => {
+        document.getElementById('msg').textContent = "Error loading data.";
+        console.error(err);
+      });
+    }
+
+    function update() {
+      let parsed;
+      try {
+        parsed = JSON.parse(document.getElementById('json').value);
+      } catch (e) {
+        document.getElementById('msg').textContent = "Invalid JSON format.";
+        return;
+      }
+
+      const batchesObj = {};
+      for (const item of parsed) {
+        if (!item.batch) {
+          document.getElementById('msg').textContent = "Missing 'batch' key in one or more entries.";
+          return;
+        }
+        const { batch, ...rest } = item;
+        batchesObj[batch] = rest;
+      }
+
+      fetch(`${API_BASE}/admin/update`, {
+        method: 'POST',
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token, data: { batches: batchesObj } })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('msg').textContent = data.message || "Update failed.";
+      })
+      .catch(err => {
+        document.getElementById('msg').textContent = "Error during update.";
+        console.error(err);
+      });
+    }
+  </script>
+</body>
+</html>
