@@ -30,7 +30,7 @@
   <pre id="output">Awaiting request...</pre>
 
   <script>
-    const API_URL = "efficient-harmony-production.up.railway.app/api/timetable";  // Change this if deployed
+    const API_URL = "https://ttserver-7zps.onrender.com/api/timetable";  // Change this if deployed
     const API_KEY = "123abc456def789ghi"; // Must match .env API_KEY
 
     function fetchTimetable() {
@@ -61,7 +61,7 @@
       });
       console.log(`Fetching timetable for batch: ${batch}`);
       output.textContent = "Fetching timetable...";
-      
+
     }
   </script>
 </body>

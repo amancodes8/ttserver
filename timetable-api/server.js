@@ -35,13 +35,8 @@ app.use((req, res, next) => {
   next();
 });
 
-// API endpoint to get timetable by batch
+// Endpoint to get all batches' timetable data
 app.get('/api/timetable', (req, res) => {
-  const batch = req.query.batch;
-  if (!batch || typeof batch !== 'string' || !batch.match(/^[A-Z0-9]+$/)) {
-    return res.status(400).json({ error: 'Invalid or missing batch parameter. Example: ?batch=E16' });
-  }
-
   const dataPath = path.join(__dirname, 'data', 'timetable.json');
 
   fs.readFile(dataPath, 'utf-8', (err, data) => {
@@ -52,13 +47,18 @@ app.get('/api/timetable', (req, res) => {
 
     try {
       const allData = JSON.parse(data);
-      const batchData = allData.batches[batch];
 
-      if (!batchData) {
-        return res.status(404).json({ error: 'Batch not found' });
+      if (!allData.batches || typeof allData.batches !== 'object') {
+        return res.status(500).json({ error: 'Invalid data format in timetable.json' });
       }
 
-      res.json(batchData);
+      // Convert batches object to an array of batch data
+      const batchArray = Object.entries(allData.batches).map(([batch, info]) => ({
+        batch,
+        ...info
+      }));
+
+      res.json(batchArray);
     } catch (parseErr) {
       console.error('Error parsing timetable JSON:', parseErr);
       return res.status(500).json({ error: 'Internal server error' });
