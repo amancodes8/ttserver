@@ -1,1529 +1,514 @@
-[
-  {
-    "batch": "E16",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ADC",
-        "room": "133",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "FA, Litr,Psycho,  IE, Litr",
-        "room": "148, 153, ...,  117, 244B",
-        "teacher": "SV, PS, Shweta,  AA, ES"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-DSP",
-        "room": "228",
-        "teacher": "SVS"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-ML",
-        "room": "142",
-        "teacher": "ANKUR GUPTA"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-AE",
-        "room": "224/142",
-        "teacher": "Tikkiwal"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "244B",
-        "teacher": "RKS"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "T-UHV",
-        "room": "126",
-        "teacher": "Sakshi Varshney"
-      },
-      {
-        "time": "02:00-2:50",
-        "subject": "T-DSP",
-        "room": "116",
-        "teacher": "KD Tyagi"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-ML",
-        "room": "CR53",
-        "teacher": "Parul Arora"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-AE",
-        "room": "116",
-        "teacher": "BR. Chaturvedi"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-ML",
-        "room": "134",
-        "teacher": "ANKUR GUPTA"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "FA, Litr, IE, Litr",
-        "room": "148, 153, 117, 244B",
-        "teacher": "SV, PS, AA, ES"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-ADC",
-        "room": "CR54",
-        "teacher": "RKS"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-UHV",
-        "room": "217",
-        "teacher": "Priyanka Kwatra"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-AE",
-        "room": "244B",
-        "teacher": "BR. Chaturvedi"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-UHV",
-        "room": "244B",
-        "teacher": "Priyanka Kwatra"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "244B",
-        "teacher": "RKS"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-DSP",
-        "room": "CR53",
-        "teacher": "SVS"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-FA,T-Litr, T-IE",
-        "room": "127, 121, 126",
-        "teacher": "SV, PS, AA"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ADC",
-        "room": "116",
-        "teacher": "RKS"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "CR53",
-        "teacher": "BR. Chaturvedi"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ML",
-        "room": "CR53",
-        "teacher": "Parul Arora"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-DSP",
-        "room": "CR53",
-        "teacher": "SVS"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ML",
-        "room": "CR53",
-        "teacher": "Parul Arora"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-AE",
-        "room": "CR53",
-        "teacher": "BR. Chaturvedi"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-DSP",
-        "room": "134",
-        "teacher": "SVS"
-      }
-    ]
-  },
-  {
-    "batch": "E15",
-    "Monday": [
-      {
-        "time": "9:00-09:50",
-        "subject": "T-AE",
-        "room": "116",
-        "teacher": "NY"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "T-DSP",
-        "room": "121",
-        "teacher": "KD Tyagi"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-DSP",
-        "room": "228",
-        "teacher": "SVS"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-DSP",
-        "room": "134",
-        "teacher": "B Suresh"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "244B",
-        "teacher": "RKS"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-ML",
-        "room": "CR53",
-        "teacher": "Parul Arora"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-DSP",
-        "room": "DW04",
-        "teacher": "SVS"
-      },
-      {
-        "time": "10:00-11:50",
-        "subject": "P-ML",
-        "room": "133",
-        "teacher": "AJIT KUMAR"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "FA, Litr, IE, Litr",
-        "room": "148, 153, 117, 244B",
-        "teacher": "SV, PS, AA, ES"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-ADC",
-        "room": "CR54",
-        "teacher": "RKS"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-UHV",
-        "room": "217",
-        "teacher": "Priyanka Kwatra"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-AE",
-        "room": "244B",
-        "teacher": "BR. Chaturvedi"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-UHV",
-        "room": "244B",
-        "teacher": "Priyanka Kwatra"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "244B",
-        "teacher": "RKS"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-DSP",
-        "room": "CR53",
-        "teacher": "SVS"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-FA, T-Litr, T-IE",
-        "room": "127, 121, 126",
-        "teacher": "SV, PS, AA"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-AE",
-        "room": "224/142",
-        "teacher": "Tikkiwal"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "CR53",
-        "teacher": "BR. Chaturvedi"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ML",
-        "room": "CR53",
-        "teacher": "Parul Arora"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-DSP",
-        "room": "CR53",
-        "teacher": "SVS"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-ML",
-        "room": "142",
-        "teacher": "ANKUR GUPTA"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ML",
-        "room": "CR53",
-        "teacher": "Parul Arora"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-AE",
-        "room": "CR53",
-        "teacher": "BR. Chaturvedi"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-ML",
-        "room": "142",
-        "teacher": "ANKUR GUPTA"
-      }
-    ]
-  },
-  {
-    "batch": "E17",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ADC",
-        "room": "201",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "202",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-DSP",
-        "room": "203",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-AE",
-        "room": "204",
-        "teacher": "Aman"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-DSP",
-        "room": "205",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "206",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-AE",
-        "room": "207",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-ML",
-        "room": "208",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ADC",
-        "room": "209",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-AE",
-        "room": "210",
-        "teacher": "Aman"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-ML",
-        "room": "211",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ADC",
-        "room": "212",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-AE",
-        "room": "213",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-DSP",
-        "room": "214",
-        "teacher": "Aman"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ML",
-        "room": "215",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "216",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-AE",
-        "room": "217",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-DSP",
-        "room": "218",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ML",
-        "room": "219",
-        "teacher": "Aman"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ADC",
-        "room": "220",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "221",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-DSP",
-        "room": "222",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-AE",
-        "room": "223",
-        "teacher": "Aman"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ADC",
-        "room": "224",
-        "teacher": "Aman"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-ML",
-        "room": "225",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-DSP",
-        "room": "226",
-        "teacher": "Aman"
-      }
-    ]
-  },
-  {
-    "batch": "E18",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ML",
-        "room": "301",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "302",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-AE",
-        "room": "303",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-DSP",
-        "room": "304",
-        "teacher": "Aman"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ADC",
-        "room": "305",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "306",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-DSP",
-        "room": "307",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-AE",
-        "room": "308",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ML",
-        "room": "309",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-ADC",
-        "room": "310",
-        "teacher": "Aman"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-AE",
-        "room": "311",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "312",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-DSP",
-        "room": "313",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-ADC",
-        "room": "314",
-        "teacher": "Aman"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-AE",
-        "room": "315",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "316",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "317",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-DSP",
-        "room": "318",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-AE",
-        "room": "319",
-        "teacher": "Aman"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ML",
-        "room": "320",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-DSP",
-        "room": "321",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-AE",
-        "room": "322",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ADC",
-        "room": "323",
-        "teacher": "Aman"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ML",
-        "room": "324",
-        "teacher": "Aman"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-AE",
-        "room": "325",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-ADC",
-        "room": "326",
-        "teacher": "Aman"
-      }
-    ]
-  },
-  {
-    "batch": "E19",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-AE",
-        "room": "401",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-DSP",
-        "room": "402",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ADC",
-        "room": "403",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-ML",
-        "room": "404",
-        "teacher": "Aman"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ML",
-        "room": "405",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "406",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ML",
-        "room": "407",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-ADC",
-        "room": "408",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-DSP",
-        "room": "409",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-ML",
-        "room": "410",
-        "teacher": "Aman"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-ADC",
-        "room": "411",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-AE",
-        "room": "412",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-ML",
-        "room": "413",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-DSP",
-        "room": "414",
-        "teacher": "Aman"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ADC",
-        "room": "415",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "416",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ML",
-        "room": "417",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-DSP",
-        "room": "418",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-AE",
-        "room": "419",
-        "teacher": "Aman"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ML",
-        "room": "420",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-DSP",
-        "room": "421",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "422",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "423",
-        "teacher": "Aman"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-AE",
-        "room": "424",
-        "teacher": "Aman"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-ADC",
-        "room": "425",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-DSP",
-        "room": "426",
-        "teacher": "Aman"
-      }
-    ]
-  },
-  {
-    "batch": "E20",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-DSP",
-        "room": "501",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "502",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "503",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-ADC",
-        "room": "504",
-        "teacher": "Aman"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-AE",
-        "room": "505",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-DSP",
-        "room": "506",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "507",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-ML",
-        "room": "508",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ADC",
-        "room": "509",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-DSP",
-        "room": "510",
-        "teacher": "Aman"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-ML",
-        "room": "511",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ADC",
-        "room": "512",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-AE",
-        "room": "513",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-ML",
-        "room": "514",
-        "teacher": "Aman"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-DSP",
-        "room": "515",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "516",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ML",
-        "room": "517",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-AE",
-        "room": "518",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ML",
-        "room": "519",
-        "teacher": "Aman"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ADC",
-        "room": "520",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "521",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-DSP",
-        "room": "522",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "523",
-        "teacher": "Aman"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ADC",
-        "room": "524",
-        "teacher": "Aman"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-ML",
-        "room": "525",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-AE",
-        "room": "526",
-        "teacher": "Aman"
-      }
-    ]
-  },
-  {
-    "batch": "E21",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ADC",
-        "room": "601",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "602",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-AE",
-        "room": "603",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-DSP",
-        "room": "604",
-        "teacher": "Aman"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ML",
-        "room": "605",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "606",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-DSP",
-        "room": "607",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-AE",
-        "room": "608",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ML",
-        "room": "609",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-ADC",
-        "room": "610",
-        "teacher": "Aman"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-AE",
-        "room": "611",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "612",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-DSP",
-        "room": "613",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-ADC",
-        "room": "614",
-        "teacher": "Aman"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-AE",
-        "room": "615",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "616",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "617",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-DSP",
-        "room": "618",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-AE",
-        "room": "619",
-        "teacher": "Aman"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ML",
-        "room": "620",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-DSP",
-        "room": "621",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-AE",
-        "room": "622",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ADC",
-        "room": "623",
-        "teacher": "Aman"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ML",
-        "room": "624",
-        "teacher": "Aman"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-AE",
-        "room": "625",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-ADC",
-        "room": "626",
-        "teacher": "Aman"
-      }
-    ]
-  },
-  {
-    "batch": "E22",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-DSP",
-        "room": "701",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "702",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "703",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-ADC",
-        "room": "704",
-        "teacher": "Aman"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ML",
-        "room": "705",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "706",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-DSP",
-        "room": "707",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-AE",
-        "room": "708",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ML",
-        "room": "709",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-ADC",
-        "room": "710",
-        "teacher": "Aman"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-AE",
-        "room": "711",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "712",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-DSP",
-        "room": "713",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-ADC",
-        "room": "714",
-        "teacher": "Aman"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-AE",
-        "room": "715",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "716",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "717",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-DSP",
-        "room": "718",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-AE",
-        "room": "719",
-        "teacher": "Aman"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ML",
-        "room": "720",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-DSP",
-        "room": "721",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-AE",
-        "room": "722",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ADC",
-        "room": "723",
-        "teacher": "Aman"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ML",
-        "room": "724",
-        "teacher": "Aman"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-AE",
-        "room": "725",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-ADC",
-        "room": "726",
-        "teacher": "Aman"
-      }
-    ]
-  },
-  {
-    "batch": "E23",
-    "Monday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-ML",
-        "room": "801",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-DSP",
-        "room": "802",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-AE",
-        "room": "803",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-4:50",
-        "subject": "P-ADC",
-        "room": "804",
-        "teacher": "Aman"
-      }
-    ],
-    "Tuesday": [
-      {
-        "time": "9:00-10:50",
-        "subject": "P-DSP",
-        "room": "805",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ML",
-        "room": "806",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ADC",
-        "room": "807",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-AE",
-        "room": "808",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-ML",
-        "room": "809",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "T-ADC",
-        "room": "810",
-        "teacher": "Aman"
-      }
-    ],
-    "Wednesday": [
-      {
-        "time": "10:00-11:50",
-        "subject": "P-AE",
-        "room": "811",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "812",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "L-ADC",
-        "room": "813",
-        "teacher": "Aman"
-      },
-      {
-        "time": "4:00-4:50",
-        "subject": "L-AE",
-        "room": "814",
-        "teacher": "Aman"
-      }
-    ],
-    "Thursday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-DSP",
-        "room": "815",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-ADC",
-        "room": "816",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-ML",
-        "room": "817",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "T-DSP",
-        "room": "818",
-        "teacher": "Aman"
-      },
-      {
-        "time": "3:00-3:50",
-        "subject": "T-AE",
-        "room": "819",
-        "teacher": "Aman"
-      }
-    ],
-    "Friday": [
-      {
-        "time": "10:00-10:50",
-        "subject": "T-ML",
-        "room": "820",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-11:50",
-        "subject": "L-AE",
-        "room": "821",
-        "teacher": "Aman"
-      },
-      {
-        "time": "12:00-12:50",
-        "subject": "L-DSP",
-        "room": "822",
-        "teacher": "Aman"
-      },
-      {
-        "time": "2:00-2:50",
-        "subject": "L-ML",
-        "room": "823",
-        "teacher": "Aman"
-      }
-    ],
-    "Saturday": [
-      {
-        "time": "9:00-9:50",
-        "subject": "L-ADC",
-        "room": "824",
-        "teacher": "Aman"
-      },
-      {
-        "time": "10:00-10:50",
-        "subject": "L-ML",
-        "room": "825",
-        "teacher": "Aman"
-      },
-      {
-        "time": "11:00-12:50",
-        "subject": "P-ADC",
-        "room": "826",
-        "teacher": "Aman"
-      }
-    ]
+{
+  "batches": {
+    "E16": {
+      "Monday": [
+        {
+          "time": "9:00-10:50",
+          "subject": "P-ADC",
+          "room": "133",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "FA, Litr,Psycho,  IE, Litr",
+          "room": "148, 153, ...,  117, 244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "228",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-4:50",
+          "subject": "P-ML",
+          "room": "142",
+          "teacher": "Aman"
+        }
+      ],
+      "Tuesday": [
+        {
+          "time": "9:00-10:50",
+          "subject": "P-AE",
+          "room": "224/142",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-ADC",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "T-UHV",
+          "room": "126",
+          "teacher": "Aman"
+        },
+        {
+          "time": "02:00-2:50",
+          "subject": "T-DSP",
+          "room": "116",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "4:00-4:50",
+          "subject": "T-AE",
+          "room": "116",
+          "teacher": "Aman"
+        }
+      ],
+      "Wednesday": [
+        {
+          "time": "10:00-11:50",
+          "subject": "P-ML",
+          "room": "134",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "FA, Litr, IE, Litr",
+          "room": "148, 153, 117, 244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "L-ADC",
+          "room": "CR54",
+          "teacher": "Aman"
+        },
+        {
+          "time": "4:00-4:50",
+          "subject": "L-UHV",
+          "room": "217",
+          "teacher": "Aman"
+        }
+      ],
+      "Thursday": [
+        {
+          "time": "9:00-9:50",
+          "subject": "L-AE",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-UHV",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "L-ADC",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "T-FA,T-Litr, T-IE",
+          "room": "127, 121, 126",
+          "teacher": "Aman"
+        }
+      ],
+      "Friday": [
+        {
+          "time": "10:00-10:50",
+          "subject": "T-ADC",
+          "room": "116",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-AE",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "CR53",
+          "teacher": "Aman"
+        }
+      ],
+      "Saturday": [
+        {
+          "time": "9:00-9:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "10:00-10:50",
+          "subject": "L-AE",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-12:50",
+          "subject": "P-DSP",
+          "room": "134",
+          "teacher": "Aman"
+        }
+      ]
+    },
+    "E17": {
+      "Monday": [
+        {
+          "time": "9:00-10:50",
+          "subject": "P-ADC",
+          "room": "133",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "FA, Litr,Psycho,  IE, Litr",
+          "room": "148, 153, ...,  117, 244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "228",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-4:50",
+          "subject": "P-ML",
+          "room": "142",
+          "teacher": "Aman"
+        }
+      ],
+      "Tuesday": [
+        {
+          "time": "9:00-10:50",
+          "subject": "P-AE",
+          "room": "224/142",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-ADC",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "T-UHV",
+          "room": "126",
+          "teacher": "Aman"
+        },
+        {
+          "time": "02:00-2:50",
+          "subject": "T-DSP",
+          "room": "116",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "4:00-4:50",
+          "subject": "T-AE",
+          "room": "116",
+          "teacher": "Aman"
+        }
+      ],
+      "Wednesday": [
+        {
+          "time": "10:00-11:50",
+          "subject": "P-ML",
+          "room": "134",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "FA, Litr, IE, Litr",
+          "room": "148, 153, 117, 244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "L-ADC",
+          "room": "CR54",
+          "teacher": "Aman"
+        },
+        {
+          "time": "4:00-4:50",
+          "subject": "L-UHV",
+          "room": "217",
+          "teacher": "Aman"
+        }
+      ],
+      "Thursday": [
+        {
+          "time": "9:00-9:50",
+          "subject": "L-AE",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-UHV",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "L-ADC",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "T-FA,T-Litr, T-IE",
+          "room": "127, 121, 126",
+          "teacher": "Aman"
+        }
+      ],
+      "Friday": [
+        {
+          "time": "10:00-10:50",
+          "subject": "T-ADC",
+          "room": "116",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-AE",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "CR53",
+          "teacher": "Aman"
+        }
+      ],
+      "Saturday": [
+        {
+          "time": "9:00-9:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "10:00-10:50",
+          "subject": "L-AE",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-12:50",
+          "subject": "P-DSP",
+          "room": "134",
+          "teacher": "Aman"
+        }
+      ]
+    },
+    "E18": {
+      "Monday": [
+        {
+          "time": "9:00-10:50",
+          "subject": "P-ADC",
+          "room": "133",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "FA, Litr,Psycho,  IE, Litr",
+          "room": "148, 153, ...,  117, 244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "228",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-4:50",
+          "subject": "P-ML",
+          "room": "142",
+          "teacher": "Aman"
+        }
+      ],
+      "Tuesday": [
+        {
+          "time": "9:00-10:50",
+          "subject": "P-AE",
+          "room": "224/142",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-ADC",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "T-UHV",
+          "room": "126",
+          "teacher": "Aman"
+        },
+        {
+          "time": "02:00-2:50",
+          "subject": "T-DSP",
+          "room": "116",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "4:00-4:50",
+          "subject": "T-AE",
+          "room": "116",
+          "teacher": "Aman"
+        }
+      ],
+      "Wednesday": [
+        {
+          "time": "10:00-11:50",
+          "subject": "P-ML",
+          "room": "134",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "FA, Litr, IE, Litr",
+          "room": "148, 153, 117, 244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "L-ADC",
+          "room": "CR54",
+          "teacher": "Aman"
+        },
+        {
+          "time": "4:00-4:50",
+          "subject": "L-UHV",
+          "room": "217",
+          "teacher": "Aman"
+        }
+      ],
+      "Thursday": [
+        {
+          "time": "9:00-9:50",
+          "subject": "L-AE",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-UHV",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "L-ADC",
+          "room": "244B",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "3:00-3:50",
+          "subject": "T-FA,T-Litr, T-IE",
+          "room": "127, 121, 126",
+          "teacher": "Aman"
+        }
+      ],
+      "Friday": [
+        {
+          "time": "10:00-10:50",
+          "subject": "T-ADC",
+          "room": "116",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-11:50",
+          "subject": "L-AE",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "12:00-12:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "2:00-2:50",
+          "subject": "L-DSP",
+          "room": "CR53",
+          "teacher": "Aman"
+        }
+      ],
+      "Saturday": [
+        {
+          "time": "9:00-9:50",
+          "subject": "L-ML",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "10:00-10:50",
+          "subject": "L-AE",
+          "room": "CR53",
+          "teacher": "Aman"
+        },
+        {
+          "time": "11:00-12:50",
+          "subject": "P-DSP",
+          "room": "134",
+          "teacher": "Aman"
+        }
+      ]
+    }
   }
-]
+}
