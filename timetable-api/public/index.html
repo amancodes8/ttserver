@@ -261,7 +261,7 @@
     let currentIndex = 0;
 
     function fetchTimetable() {
-      fetch('http://localhost:3000/api/timetable', {
+      fetch('https://ttserver-7zps.onrender.com/api/timetable', {
         headers: { 'x-api-key': API_KEY }
       })
       .then(res => res.json())
@@ -319,7 +319,7 @@
       const username = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
 
-      fetch('http://localhost:3000/admin/login', {
+      fetch('https://ttserver-7zps.onrender.com/admin/login', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ username, password })
@@ -351,7 +351,7 @@
     }
 
     function loadTimetableForEdit() {
-      fetch('http://localhost:3000/api/timetable', {
+      fetch('https://ttserver-7zps.onrender.com/api/timetable', {
         headers: { 'x-api-key': API_KEY }
       })
       .then(res => res.json())
@@ -377,7 +377,7 @@
         return;
       }
 
-      fetch('http://localhost:3000//admin/update', {
+      fetch('https://ttserver-7zps.onrender.com/admin/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, data })
