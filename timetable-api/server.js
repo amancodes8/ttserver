@@ -1,150 +1,137 @@
 require('dotenv').config();
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const API_KEY = process.env.API_KEY;
-const ADMIN_USERNAME = process.env.ADMIN_USERNAME;
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+const { API_KEY, ADMIN_USERNAME, ADMIN_PASSWORD, ADMIN_TOKEN, MONGO_URI } = process.env;
 
-if (!API_KEY) {
-  console.error('FATAL ERROR: API_KEY is not defined in environment variables');
+if (!MONGO_URI || !API_KEY || !ADMIN_USERNAME || !ADMIN_PASSWORD || !ADMIN_TOKEN) {
+  console.error('FATAL ERROR: One or more required environment variables are missing.');
   process.exit(1);
 }
 
-if (!ADMIN_USERNAME || !ADMIN_PASSWORD || !ADMIN_TOKEN) {
-  console.error('FATAL ERROR: Admin credentials or token missing in environment variables');
+// Connect to MongoDB
+mongoose.connect(MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log('✅ Connected to MongoDB');
+}).catch((err) => {
+  console.error('❌ MongoDB connection failed:', err);
   process.exit(1);
-}
+});
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'x-api-key']
-}));
+// Middlewares
+app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-// API key check (skip /admin and /health)
-app.use((req, res, next) => {
-  if (
-    req.path.startsWith('/admin') ||
-    req.path === '/health'
-  ) return next();
+// Mongoose schema for a timetable batch
+const batchSchema = new mongoose.Schema({
+  batch: { type: String, required: true, unique: true },
+  Monday: { type: Array, default: [] },
+  Tuesday: { type: Array, default: [] },
+  Wednesday: { type: Array, default: [] },
+  Thursday: { type: Array, default: [] },
+  Friday: { type: Array, default: [] },
+  Saturday: { type: Array, default: [] }
+}, { collection: 'batches' });
 
-  const userKey = req.headers['x-api-key'];
-  if (userKey !== API_KEY) {
+const Batch = mongoose.model('Batch', batchSchema);
+
+// Middleware: Validate API key (except for admin/health routes)
+app.use((req, res, next) => {
+  if (req.path.startsWith('/admin') || req.path === '/health') return next();
+  if (req.headers['x-api-key'] !== API_KEY) {
     return res.status(403).json({ error: 'Forbidden: Invalid API key' });
   }
   next();
 });
 
-// GET timetable for all batches
-app.get('/api/timetable', (req, res) => {
-  const dataPath = path.join(__dirname, 'data', 'timetable.json');
-
-  fs.readFile(dataPath, 'utf-8', (err, data) => {
-    if (err) {
-      console.error('Error reading timetable:', err);
-      return res.status(500).json({ error: 'Internal server error' });
-    }
-
-    try {
-      const allData = JSON.parse(data);
-      if (!allData.batches || typeof allData.batches !== 'object') {
-        return res.status(500).json({ error: 'Invalid data format' });
-      }
-
-      const batchArray = Object.entries(allData.batches).map(([batch, info]) => ({
-        batch,
-        ...info
-      }));
-
-      res.json(batchArray);
-    } catch (parseErr) {
-      console.error('Error parsing timetable:', parseErr);
-      res.status(500).json({ error: 'Failed to parse timetable' });
-    }
-  });
-});
-
-// GET raw JSON timetable (for admin textarea)
-app.get('/admin/raw-timetable', (req, res) => {
-  const dataPath = path.join(__dirname, 'data', 'timetable.json');
-
-  fs.readFile(dataPath, 'utf-8', (err, data) => {
-    if (err) {
-      console.error('Error reading raw timetable:', err);
-      return res.status(500).json({ error: 'Failed to read timetable' });
-    }
-    res.type('application/json').send(data);
-  });
-});
-
-app.get('/health', (req, res) => {
+// Health Check
+app.get('/health', (_, res) => {
   res.json({ status: 'ok' });
 });
 
-// Admin login using credentials from .env
-app.post('/admin/login', (req, res) => {
-  const { username, password } = req.body;
-
-  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-    return res.json({ success: true, token: ADMIN_TOKEN });
-  } else {
-    return res.json({ success: false, error: 'Invalid credentials' });
+// Public route: Fetch all batches
+app.get('/api/timetable', async (req, res) => {
+  try {
+    const batches = await Batch.find({});
+    res.json(batches);
+  } catch (err) {
+    console.error('Error fetching timetable:', err);
+    res.status(500).json({ error: 'Failed to fetch timetable' });
   }
 });
 
-// Admin update timetable (token from .env)
-app.post('/admin/update', (req, res) => {
-  const { token, data } = req.body;
+// Admin login
+app.post('/admin/login', (req, res) => {
+  const { username, password } = req.body;
+  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    res.json({ success: true, token: ADMIN_TOKEN });
+  } else {
+    res.json({ success: false, error: 'Invalid credentials' });
+  }
+});
 
+// Admin update timetable - update or insert batches individually
+app.post('/admin/update', async (req, res) => {
+  const { token, data } = req.body;
   if (token !== ADMIN_TOKEN) {
     return res.status(403).json({ error: 'Invalid token' });
   }
 
-  const dataPath = path.join(__dirname, 'data', 'timetable.json');
+  if (!Array.isArray(data)) {
+    return res.status(400).json({ error: 'Data must be an array' });
+  }
 
   try {
-    const updated = { batches: {} };
-    for (const item of data) {
-      if (!item.batch) continue;
-      const { batch, ...rest } = item;
-      updated.batches[batch] = rest;
-    }
+    // Update or insert each batch
+    const ops = data.map(batchData => {
+      return Batch.findOneAndUpdate(
+        { batch: batchData.batch },
+        batchData,
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
+    });
 
-    fs.writeFileSync(dataPath, JSON.stringify(updated, null, 2), 'utf-8');
-    return res.json({ success: true, message: 'Timetable updated successfully' });
+    await Promise.all(ops);
 
+    // Fetch updated timetable to return
+    const updatedBatches = await Batch.find({});
+    res.json({ success: true, message: 'Timetable updated successfully', batches: updatedBatches });
   } catch (err) {
     console.error('Update error:', err);
-    return res.status(500).json({ error: 'Failed to update timetable' });
+    res.status(500).json({ error: 'Failed to update timetable' });
   }
 });
 
-// Change password route - NOT supported because password is in .env (optional: you can remove this)
-app.post('/admin/change-password', (req, res) => {
-  res.status(403).json({ error: 'Change password is not supported when credentials are stored in .env' });
+// Optional: Fetch raw timetable for admin textarea or editor
+app.get('/admin/raw-timetable', async (req, res) => {
+  try {
+    const batches = await Batch.find({});
+    res.json({ batches });
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch raw timetable' });
+  }
 });
 
-// 404 for unknown endpoints
+// 404 handler
 app.use((req, res) => {
   res.status(404).json({ error: 'Endpoint not found' });
 });
 
-// Error handler middleware
+// Error middleware
 app.use((err, req, res, next) => {
-  console.error('Unhandled Error:', err);
-  res.status(500).json({ error: 'Something went wrong' });
+  console.error('Unhandled error:', err);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
+// Start server
 app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

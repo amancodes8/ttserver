@@ -3,409 +3,322 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>📅 Timetable Viewer + Admin</title>
+  <title>Timetable Viewer & Admin</title>
   <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
-    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f4f6f8;
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #eee;
       margin: 0;
-      padding: 20px;
-      color: #222;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      padding: 0 1rem;
     }
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      background: #fff;
-      padding: 30px 25px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    header {
       display: flex;
-      flex-direction: column;
-      gap: 30px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
     }
-    h1, h2 {
-      text-align: center;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin: 0;
-    }
-    h1 {
-      font-size: 2.6rem;
-      margin-bottom: 5px;
-    }
-    h2 {
-      font-size: 1.8rem;
-    }
-    #batch-title {
-      margin-top: 0;
-      color: #004a99;
-    }
-
-    /* Batch buttons */
-    .batch-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 10px 0 30px;
-    }
-    .batch-buttons button {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
+    button {
       cursor: pointer;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-      flex-shrink: 0;
-      min-width: 100px;
-    }
-    .batch-buttons button:hover,
-    .batch-buttons button:focus {
-      background-color: #0056b3;
-      outline: none;
-    }
-
-    /* Timetable day cards */
-    #timetable-display {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .day-card {
-      background: #e9f0fa;
-      border-left: 6px solid #007bff;
-      padding: 20px 25px;
-      border-radius: 10px;
-      width: 320px;
-      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: transform 0.2s ease;
-    }
-    .day-card:hover {
-      transform: translateY(-4px);
-    }
-    .day-card h3 {
-      margin: 0 0 10px 0;
-      color: #0056b3;
-      font-weight: 700;
-      font-size: 1.25rem;
-      border-bottom: 1px solid #007bff44;
-      padding-bottom: 6px;
-    }
-    .period {
-      margin: 0;
-      padding: 10px 14px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #333;
-      line-height: 1.3;
-      user-select: none;
-    }
-
-    /* Divider */
-    .divider {
-      margin: 40px 0 20px;
-      border-bottom: 1px solid #ccc;
-      width: 100%;
-    }
-
-    /* Form elements */
-    input[type="text"],
-    input[type="password"],
-    textarea {
-      width: 100%;
-      padding: 14px 16px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1.8px solid #ccc;
-      font-family: 'Courier New', Courier, monospace;
-      transition: border-color 0.3s ease;
-      resize: vertical;
-      color: #333;
-    }
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    textarea:focus {
-      border-color: #007bff;
-      outline: none;
-    }
-
-    /* Buttons */
-    button.update-btn {
       background: #007bff;
-      color: white;
       border: none;
-      cursor: pointer;
-      max-width: 220px;
-      padding: 14px 0;
-      margin: 10px auto 0;
-      display: block;
-      font-size: 1.1rem;
-      border-radius: 8px;
-      font-weight: 700;
-      box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
-      transition: background-color 0.25s ease, box-shadow 0.25s ease;
+      padding: 0.5rem 1rem;
+      color: white;
+      border-radius: 4px;
     }
-    button.update-btn:hover,
-    button.update-btn:focus {
-      background: #0056b3;
-      box-shadow: 0 8px 16px rgba(0, 86, 179, 0.6);
-      outline: none;
+    button:disabled {
+      background: #555;
+      cursor: default;
     }
-
-    /* Hide elements */
+    input, textarea {
+      font-family: monospace;
+      font-size: 1rem;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 4px;
+      border: none;
+      padding: 0.5rem;
+      margin: 0.5rem 0 1rem 0;
+      background: #222;
+      color: #eee;
+    }
     .hidden {
-      display: none !important;
+      display: none;
     }
-
-    /* Messages */
-    .msg {
-      font-weight: 700;
-      margin: 5px 0 15px;
-      text-align: center;
-      color: #d9534f; /* default red */
+    .timetable {
+      margin-top: 1rem;
     }
-    .msg.success {
-      color: #28a745;
+    .batch {
+      background: #222;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
     }
-
-    /* Responsive */
-    @media (max-width: 1024px) {
-      .day-card {
-        width: 45%;
-      }
+    .batch h3 {
+      margin-top: 0;
+      border-bottom: 1px solid #444;
+      padding-bottom: 0.5rem;
     }
-    @media (max-width: 640px) {
-      .container {
-        padding: 20px 15px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-      .day-card {
-        width: 100%;
-        padding: 18px 20px;
-      }
-      .batch-buttons {
-        gap: 8px;
-      }
-      .batch-buttons button {
-        min-width: 80px;
-        padding: 10px 14px;
-        font-size: 0.9rem;
-      }
-      input[type="text"],
-      input[type="password"],
-      textarea {
-        font-size: 0.95rem;
-        padding: 12px 14px;
-      }
-      button.update-btn {
-        max-width: 100%;
-        font-size: 1rem;
-        padding: 12px 0;
-      }
+    .day {
+      margin-top: 0.5rem;
+    }
+    .day strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    form {
+      max-width: 600px;
+    }
+    #loginForm {
+      max-width: 320px;
+    }
+    label {
+      display: block;
+      margin-top: 0.5rem;
+    }
+    #message {
+      margin: 0.5rem 0;
+      color: #f88;
+    }
+    #successMessage {
+      margin: 0.5rem 0;
+      color: #8f8;
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main" aria-label="Timetable Viewer and Admin Panel">
-    <h1>📅 Timetable Viewer</h1>
-    <h2 id="batch-title">🗓️ Batch: -</h2>
-    <div class="batch-buttons" id="batch-switcher" role="tablist" aria-label="Batch selector"></div>
-    <div id="timetable-display" aria-live="polite" aria-atomic="true">Loading...</div>
 
-    <div class="divider" role="separator"></div>
+<header>
+  <h1>Timetable Viewer</h1>
+  <button id="toggleAdminBtn">Admin Login</button>
+</header>
 
-    <section aria-labelledby="admin-login-title">
-      <h2 id="admin-login-title">🔐 Admin Login</h2>
-      <div id="login-section">
-        <input type="text" id="username" placeholder="Username" autocomplete="username" aria-label="Username" />
-        <input type="password" id="password" placeholder="Password" autocomplete="current-password" aria-label="Password" />
-        <button class="update-btn" onclick="login()" aria-describedby="login-msg">Login</button>
-        <p id="login-msg" class="msg" aria-live="assertive"></p>
-      </div>
-    </section>
+<!-- User section with refresh button -->
+<section id="userSection">
+  <button id="refreshBtn">Refresh Timetable</button>
+  <div id="userMessage"></div>
+  <div id="timetableDisplay" class="timetable"></div>
+</section>
 
-    <section id="admin-section" class="hidden" aria-labelledby="admin-update-title" aria-hidden="true">
-      <h2 id="admin-update-title">✏️ Update Timetable (Admin)</h2>
-      <textarea id="timetable-data" placeholder='Timetable JSON will load here...' rows="15" aria-label="Editable timetable JSON"></textarea>
-      <button class="update-btn" onclick="updateTimetable()" aria-describedby="update-msg">Update Timetable</button>
-      <p id="update-msg" class="msg" aria-live="assertive"></p>
-    </section>
-  </div>
+<!-- Admin Login Form -->
+<section id="adminLoginSection" class="hidden">
+  <h2>Admin Login</h2>
+  <form id="loginForm">
+    <label for="adminUsername">Username:</label>
+    <input type="text" id="adminUsername" required />
+    <label for="adminPassword">Password:</label>
+    <input type="password" id="adminPassword" required />
+    <button type="submit">Login</button>
+  </form>
+  <div id="loginMessage"></div>
+  <button id="backToUserBtn" style="margin-top: 1rem;">Back to User View</button>
+</section>
 
-  <script>
-    let token = '';
-    const API_KEY = '123abc456def789ghi'; // Replace with your actual API key
-    let fullData = [];
-    let currentIndex = 0;
+<!-- Admin Panel -->
+<section id="adminPanelSection" class="hidden">
+  <h2>Admin Panel - Update Timetable</h2>
+  <textarea id="timetableTextarea" rows="15" placeholder="Paste timetable JSON array here"></textarea>
+  <button id="updateTimetableBtn">Update Timetable</button>
+  <div id="adminMessage"></div>
+  <button id="adminLogoutBtn" style="margin-top: 1rem;">Logout</button>
+</section>
 
-    function fetchTimetable() {
-      fetch('https://ttserver-7zps.onrender.com/api/timetable', {
-        headers: { 'x-api-key': API_KEY }
-      })
-      .then(res => res.json())
-      .then(data => {
-        fullData = data;
-        createBatchButtons();
-        showBatch(0);
-      })
-      .catch(err => {
-        document.getElementById('timetable-display').innerHTML = '<p style="color:red">❌ Failed to load timetable</p>';
-        console.error(err);
-      });
+<script>
+  const toggleAdminBtn = document.getElementById('toggleAdminBtn');
+  const userSection = document.getElementById('userSection');
+  const adminLoginSection = document.getElementById('adminLoginSection');
+  const adminPanelSection = document.getElementById('adminPanelSection');
+
+  const refreshBtn = document.getElementById('refreshBtn');
+  const timetableDisplay = document.getElementById('timetableDisplay');
+  const userMessage = document.getElementById('userMessage');
+
+  const loginForm = document.getElementById('loginForm');
+  const adminUsername = document.getElementById('adminUsername');
+  const adminPassword = document.getElementById('adminPassword');
+  const loginMessage = document.getElementById('loginMessage');
+  const backToUserBtn = document.getElementById('backToUserBtn');
+
+  const timetableTextarea = document.getElementById('timetableTextarea');
+  const updateTimetableBtn = document.getElementById('updateTimetableBtn');
+  const adminMessage = document.getElementById('adminMessage');
+  const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+
+  let adminToken = null;
+  const HARDCODED_API_KEY = "123abc456def789ghi"; // optional if required
+
+  // Render function
+  function renderTimetable(batches) {
+    if (!batches || batches.length === 0) {
+      timetableDisplay.innerHTML = '<p>No timetable data found.</p>';
+      return;
     }
-
-    function createBatchButtons() {
-      const switcher = document.getElementById('batch-switcher');
-      switcher.innerHTML = '';
-      fullData.forEach((_, index) => {
-        const btn = document.createElement('button');
-        btn.textContent = `Batch ${index + 1}`;
-        btn.onclick = () => showBatch(index);
-        switcher.appendChild(btn);
-      });
-    }
-
-    function showBatch(index) {
-      currentIndex = index;
-      const timetable = fullData[index];
-      document.getElementById('batch-title').textContent = `🗓️ Batch: ${timetable.batch}`;
-      const display = document.getElementById('timetable-display');
-      display.innerHTML = '';
-
-      for (const day in timetable) {
-        if (day !== 'batch') {
-          const card = document.createElement('div');
-          card.className = 'day-card';
-
-          const title = document.createElement('h3');
-          title.textContent = `📅 ${day}`;
-          card.appendChild(title);
-
-          timetable[day].forEach(period => {
-            const p = document.createElement('div');
-            p.className = 'period';
-            p.textContent = `🕘 ${period.time} — ${period.subject} (Room: ${period.room}, Teacher: ${period.teacher})`;
-            card.appendChild(p);
+    timetableDisplay.innerHTML = '';
+    batches.forEach((batch, index) => {
+      const batchDiv = document.createElement('div');
+      batchDiv.className = 'batch';
+      const batchLabel = batch.batch;
+      batchDiv.innerHTML = `<h3>${batchLabel}</h3>`;
+      ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].forEach(day => {
+        const dayData = batch[day];
+        if (Array.isArray(dayData) && dayData.length > 0) {
+          const dayDiv = document.createElement('div');
+          dayDiv.className = 'day';
+          dayDiv.innerHTML = `<strong>${day}:</strong>`;
+          const ul = document.createElement('ul');
+          dayData.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = JSON.stringify(item);
+            ul.appendChild(li);
           });
-
-          display.appendChild(card);
+          dayDiv.appendChild(ul);
+          batchDiv.appendChild(dayDiv);
         }
-      }
-    }
-
-    function login() {
-      const username = document.getElementById('username').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      fetch('https://ttserver-7zps.onrender.com/admin/login', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ username, password })
-      })
-      .then(res => res.json())
-      .then(data => {
-        const msg = document.getElementById('login-msg');
-        if (data.success) {
-          token = data.token;
-          msg.textContent = "✅ Login successful!";
-          msg.classList.remove('error');
-          msg.classList.add('success');
-          document.getElementById('admin-section').classList.remove('hidden');
-          document.getElementById('admin-section').setAttribute('aria-hidden', 'false');
-          loadTimetableForEdit();
-        } else {
-          msg.textContent = "❌ Login failed: " + (data.error || 'Invalid credentials');
-          msg.classList.remove('success');
-          msg.classList.add('error');
-        }
-      })
-      .catch(err => {
-        const msg = document.getElementById('login-msg');
-        msg.textContent = '❌ Network error';
-        msg.classList.remove('success');
-        msg.classList.add('error');
-        console.error(err);
       });
-    }
+      timetableDisplay.appendChild(batchDiv);
+    });
+  }
 
-    function loadTimetableForEdit() {
-      fetch('https://ttserver-7zps.onrender.com/api/timetable', {
-        headers: { 'x-api-key': API_KEY }
-      })
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('timetable-data').value = JSON.stringify(data, null, 2);
-      })
-      .catch(err => {
-        document.getElementById('timetable-data').value = '// Failed to load timetable JSON';
-        console.error(err);
+  async function fetchTimetable() {
+    userMessage.textContent = '';
+    timetableDisplay.innerHTML = '';
+    try {
+      const res = await fetch('http://localhost:3000/api/timetable', {
+        headers: { 'x-api-key': HARDCODED_API_KEY }
       });
+      if (!res.ok) throw new Error(`Error: ${res.status} ${res.statusText}`);
+      const data = await res.json();
+      console.log('Fetched timetable data:', data);
+      const batches = Array.isArray(data) ? data : [data];
+      renderTimetable(batches);
+    } catch (err) {
+      userMessage.textContent = 'Failed to fetch timetable: ' + err.message;
     }
+  }
 
-    function updateTimetable() {
-      const raw = document.getElementById('timetable-data').value;
-      let data;
-      try {
-        data = JSON.parse(raw);
-      } catch (e) {
-        const msg = document.getElementById('update-msg');
-        msg.textContent = '❌ Invalid JSON';
-        msg.classList.remove('success');
-        msg.classList.add('error');
-        return;
-      }
+  refreshBtn.onclick = fetchTimetable;
 
-      fetch('https://ttserver-7zps.onrender.com/admin/update', {
+  toggleAdminBtn.onclick = () => {
+    if (userSection.classList.contains('hidden')) {
+      showUserView();
+    } else {
+      showAdminLogin();
+    }
+  };
+
+  function showAdminLogin() {
+    userSection.classList.add('hidden');
+    adminPanelSection.classList.add('hidden');
+    adminLoginSection.classList.remove('hidden');
+    toggleAdminBtn.textContent = 'Back to User View';
+    userMessage.textContent = '';
+    timetableDisplay.innerHTML = '';
+    loginMessage.textContent = '';
+    adminUsername.value = '';
+    adminPassword.value = '';
+  }
+
+  function showUserView() {
+    adminLoginSection.classList.add('hidden');
+    adminPanelSection.classList.add('hidden');
+    userSection.classList.remove('hidden');
+    toggleAdminBtn.textContent = 'Admin Login';
+    adminToken = null;
+    adminMessage.textContent = '';
+    loginMessage.textContent = '';
+    timetableTextarea.value = '';
+  }
+
+  async function showAdminPanel() {
+    adminLoginSection.classList.add('hidden');
+    userSection.classList.add('hidden');
+    adminPanelSection.classList.remove('hidden');
+    toggleAdminBtn.textContent = 'Back to User View';
+    adminMessage.textContent = '';
+    try {
+      const res = await fetch('http://localhost:3000/admin/raw-timetable');
+      if (!res.ok) throw new Error('Failed to fetch raw timetable');
+      const json = await res.json();
+      timetableTextarea.value = JSON.stringify(json.batches || json || [], null, 2);
+    } catch (err) {
+      timetableTextarea.value = '';
+      adminMessage.textContent = err.message;
+    }
+  }
+
+  loginForm.onsubmit = async e => {
+    e.preventDefault();
+    loginMessage.textContent = '';
+    const username = adminUsername.value.trim();
+    const password = adminPassword.value.trim();
+    if (!username || !password) {
+      loginMessage.textContent = 'Please enter username and password.';
+      return;
+    }
+    try {
+      const res = await fetch('http://localhost:3000/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ token, data })
-      })
-      .then(res => res.json())
-      .then(res => {
-        const msg = document.getElementById('update-msg');
-        if (res.success) {
-          msg.textContent = '✅ Timetable updated successfully!';
-          msg.classList.add('success');
-          fetchTimetable();
-        } else {
-          msg.textContent = '❌ ' + (res.error || 'Update failed');
-          msg.classList.remove('success');
-          msg.classList.add('error');
-        }
-      })
-      .catch(err => {
-        const msg = document.getElementById('update-msg');
-        msg.textContent = '❌ Network error';
-        msg.classList.remove('success');
-        msg.classList.add('error');
-        console.error(err);
+        body: JSON.stringify({ username, password })
       });
+      const data = await res.json();
+      if (data.success) {
+        adminToken = data.token;
+        showAdminPanel();
+      } else {
+        loginMessage.textContent = data.error || 'Login failed';
+      }
+    } catch (err) {
+      loginMessage.textContent = 'Login error: ' + err.message;
     }
+  };
 
-    // Load timetable on page ready
-    fetchTimetable();
-  </script>
+  adminLogoutBtn.onclick = () => {
+    adminToken = null;
+    showUserView();
+  };
+
+  backToUserBtn.onclick = () => {
+    showUserView();
+  };
+
+  updateTimetableBtn.onclick = async () => {
+    adminMessage.textContent = '';
+    if (!adminToken) {
+      adminMessage.textContent = 'Not authorized. Please login.';
+      return;
+    }
+    let data;
+    try {
+      data = JSON.parse(timetableTextarea.value);
+      if (!Array.isArray(data)) throw new Error('Data must be a JSON array');
+    } catch (err) {
+      adminMessage.textContent = 'Invalid JSON: ' + err.message;
+      return;
+    }
+    try {
+      const res = await fetch('http://localhost:3000/admin/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: adminToken, data })
+      });
+      const json = await res.json();
+      if (json.success) {
+        adminMessage.style.color = '#8f8';
+        adminMessage.textContent = json.message || 'Updated successfully!';
+      } else {
+        adminMessage.style.color = '#f88';
+        adminMessage.textContent = json.error || 'Update failed';
+      }
+    } catch (err) {
+      adminMessage.style.color = '#f88';
+      adminMessage.textContent = 'Update error: ' + err.message;
+    }
+  };
+
+  // Auto-load timetable on page load
+  fetchTimetable();
+</script>
+
 </body>
 </html>
