@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Timetable API Tester</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 2rem;
+      background: #f9f9f9;
+    }
+    textarea {
+      width: 100%;
+      height: 200px;
+      margin-top: 10px;
+    }
+    input, button {
+      padding: 6px 12px;
+      margin: 5px;
+    }
+    .section {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      background: #fff;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📅 Timetable API Test Interface</h1>
+
+  <!-- GET Timetable -->
+  <div class="section">
+    <h2>1. Get Timetable</h2>
+    <button onclick="getTimetable()">Fetch Timetable</button>
+    <pre id="getResult">Result will appear here...</pre>
+  </div>
+
+  <!-- Admin Login -->
+  <div class="section">
+    <h2>2. Admin Login</h2>
+    <input type="text" id="username" placeholder="Username" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="adminLogin()">Login</button>
+    <pre id="loginResult">Login result will appear here...</pre>
+  </div>
+
+  <!-- Admin Update -->
+  <div class="section">
+    <h2>3. Update Timetable (Admin Only)</h2>
+    <textarea id="timetableJSON" placeholder='Paste timetable JSON here'></textarea>
+    <button onclick="updateTimetable()">Update Timetable</button>
+    <pre id="updateResult">Update result will appear here...</pre>
+  </div>
+
+  <script>
+    const API_KEY = "123abc456def789ghi";
+    let authToken = "";
+
+    async function getTimetable() {
+      try {
+        const res = await fetch("https://ttserver-7zps.onrender.com/api/timetable", {
+          headers: { "x-api-key": API_KEY }
+        });
+        const data = await res.json();
+        document.getElementById("getResult").textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById("getResult").textContent = "❌ Error: " + err;
+      }
+    }
+
+    async function adminLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      try {
+        const res = await fetch("https://ttserver-7zps.onrender.com/admin/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.token) {
+          authToken = data.token;
+        }
+        document.getElementById("loginResult").textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById("loginResult").textContent = "❌ Error: " + err;
+      }
+    }
+
+    async function updateTimetable() {
+      const jsonText = document.getElementById("timetableJSON").value.trim();
+
+      if (!authToken) {
+        document.getElementById("updateResult").textContent = "❌ Please login first to get a token.";
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(jsonText);
+        const res = await fetch("https://ttserver-7zps.onrender.com/admin/update", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: authToken, data: parsed })
+        });
+        const data = await res.json();
+        document.getElementById("updateResult").textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        document.getElementById("updateResult").textContent = "❌ Invalid JSON or request error: " + err;
+      }
+    }
+  </script>
+</body>
+</html>
